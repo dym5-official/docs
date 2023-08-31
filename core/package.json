@@ -1,0 +1,11 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cli-color": "^2.0.3",
+    "showdown": "^2.1.0",
+    "showdown-highlight": "^3.1.0"
+  }
+}
