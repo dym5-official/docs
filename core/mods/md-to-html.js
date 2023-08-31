@@ -7,7 +7,7 @@ const videoRegex = /<!-- video::: (.*?) -->/g;
 
 showdown.extension('custom-header-id', function () {
   var rgx = /^(#{1,6})[ \t]*(.+?) *\{: *#([\S]+?)\}[ \t]*#*$/gmi;
-  
+
   return [{
     type: 'listener',
     listeners: {
@@ -16,14 +16,14 @@ showdown.extension('custom-header-id', function () {
           // find how many # there are at the beginning of the header
           // these will define the header level
           hLevel = hLevel.length;
-          
+
           // since headers can have markdown in them (ex: # some *italic* header)
           // we need to pass the text to the span parser
           hText = showdown.subParser('spanGamut')(hText, options, globals);
-          
+
           // create the appropriate HTML
           var header = '<h' + hLevel + ' id="' + hCustomId + '">' + hText + '</h' + hLevel + '>';
-          
+
           // hash block to prevent any further modification
           return showdown.subParser('hashBlock')(header, options, globals);
         });
@@ -36,14 +36,14 @@ showdown.extension('custom-header-id', function () {
 });
 
 const converter = new showdown.Converter({
-    extensions: [
-        // 'custom-header-id',
+  extensions: [
+    // 'custom-header-id',
 
-        showdownHighlight({
-            pre: false,
-            auto_detection: true
-        })
-    ]
+    showdownHighlight({
+      pre: false,
+      auto_detection: true
+    })
+  ]
 });
 
 // converter.setOption('noHeaderId', true);
@@ -57,7 +57,7 @@ const remove = (text, tokens = ['<!-- rem -->', '<!-- /rem -->']) => {
 
   const [sToken, eToken] = tokens;
 
-  while ( out.indexOf(sToken) !== -1 ) {
+  while (out.indexOf(sToken) !== -1) {
     c++;
 
     const start = out.indexOf(sToken);
@@ -104,7 +104,7 @@ const getVideos = (text) => {
   return videos;
 }
 
-const pre = `<pre class="__code"><div><span></span><span></span><span></span><textarea></textarea><button data-action="copy-code">Copy</button></div>`;
+const pre = `<pre class="__code"><div><span></span><span></span><span></span><button data-action="copy-code">Copy</button></div>`;
 
 const ensureDir = (dir) => {
   if (!fs.existsSync(dir)) {
@@ -119,7 +119,7 @@ const mdToHTML = ({ md, target = false, type = 'file' }) => {
 
   content = type === "file" ? fs.readFileSync(md).toString() : md;
   content = remove(content);
-  videos  = getVideos(content);
+  videos = getVideos(content);
 
   html = converter.makeHtml(content);
   html = html.replace(/<pre>/g, pre);
