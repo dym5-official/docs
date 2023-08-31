@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const showdown = require('showdown');
 const showdownHighlight = require("showdown-highlight");
 
@@ -105,6 +106,12 @@ const getVideos = (text) => {
 
 const pre = `<pre class="__code"><div><span></span><span></span><span></span><textarea></textarea><button data-action="copy-code">Copy</button></div>`;
 
+const ensureDir = (dir) => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
 const mdToHTML = ({ md, target = false, type = 'file' }) => {
   let html;
   let content;
@@ -132,6 +139,7 @@ const mdToHTML = ({ md, target = false, type = 'file' }) => {
   };
 
   if (target) {
+    ensureDir(path.dirname(target));
     return fs.writeFileSync(target, JSON.stringify(result));
   }
 
