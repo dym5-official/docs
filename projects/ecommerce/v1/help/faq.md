@@ -1,5 +1,7 @@
 # FAQ
-Answers to frequently asked questions...
+Answers to frequently asked questions.
+
+This is the second line.
 
 ## Hyas?
 Doks is a Hyas theme build by the creator of Hyas.
@@ -11,9 +13,20 @@ Please keep it in place.
 
 ```php
 function dophp() {
-    $a = 'Like';
-    $b = 'this';
+  $a = 'Like';
+  $b = 'this';
 
-    return $a . ' ' . $b;
+  return $a . ' ' . $b;
+}
+```
+
+## How to do json?
+
+```json
+{
+  "status": 200,
+  "payload": [
+    { "name": "John" }
+  ]
 }
 ```
