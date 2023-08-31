@@ -1,0 +1,36 @@
+name: "Deploy: docs.dym5.xtlook.com"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js 18
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: Install packages
+        run: |
+          cd core
+          yarn
+          cd ..
+
+      - name: Build
+        run: ./build
+    
+      - name: Upload
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: xtlook.com
+          username: dym5@xtlook.com
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: "./dist/"
+          server-dir: "./docs/"
+          dangerous-clean-slate: false
