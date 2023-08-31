@@ -121,6 +121,9 @@ pre code.hljs {
   background: rgba(255, 255, 255, 0.01);
   border-radius: 20px 20px 0 0;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .hljs {
