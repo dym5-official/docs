@@ -1,0 +1,41 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #1c1c1c;
+}
+
+html, body, * {
+  box-sizing: border-box;
+}
+
+#__topbar {
+  height: 52px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 5;
+  padding: 0 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+#__sidebar,
+#__body {
+  position: fixed;
+  top: 52px;
+  height: calc(100vh - 52px);
+  z-index: 5;
+  overflow: auto;
+  padding: 18px;
+}
+
+#__sidebar {
+  left: 0;
+  width: 220px;
+  border-right: 1px solid rgba(255,255,255,0.07)
+}
+
+#__body {
+  width: calc(100vw - 220px);
+  left: 220px;
+}

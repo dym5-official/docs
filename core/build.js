@@ -3,7 +3,9 @@ const fs = require("fs");
 const createFilesMap = require("./mods/create-files-map");
 const mdToHTML = require("./mods/md-to-html");
 
-const distDir = path.join(__dirname, '..', 'dist');
+const root = path.join(__dirname, '..');
+const distDir = path.join(root, 'dist');
+const template = fs.readFileSync(path.join(root, 'public', 'index.html')).toString();
 
 const ensureDir = (dir) => {
     if (!fs.existsSync(dir)) {
@@ -11,16 +13,17 @@ const ensureDir = (dir) => {
     }
 }
 
-
 const writeFile = (file, content) => {
     ensureDir(path.dirname(file));
-    fs.writeFileSync(file, content);
+
+    let html;
+    
+    html = template.replace('{{--body--}}', content);
+
+    fs.writeFileSync(file, html);
 }
 
-(async () => {
-    const projectsDir = path.join(__dirname, '..', 'projects');
-    const list = createFilesMap(projectsDir);
-
+const convertFiles = async (projectsDir, list) => {
     for (const project of list) {
         for (const doc of project) {
             const { path: docPath, config: { menu } } = doc;
@@ -33,7 +36,7 @@ const writeFile = (file, content) => {
                     let dest = source.slice(0, -3) + '.html';
 
                     source = path.join(projectsDir, source);
-                    dest = path.join(distDir, dest);
+                    dest = path.join(distDir, "projects", dest);
 
                     const result = mdToHTML({ md: source });
 
@@ -42,5 +45,20 @@ const writeFile = (file, content) => {
             }
         }
     }
+}
 
+const copyPublicFiles = async () => {
+    const src = path.join(root, 'public');
+    const dest = path.join(root, 'dist');
+
+    fs.cpSync(src, dest, {recursive: true});
+    fs.rmSync(path.join(dest, 'index.html'));
+}
+
+(async () => {
+    const projectsDir = path.join(__dirname, '..', 'projects');
+    const list = createFilesMap(projectsDir);
+
+    await convertFiles(projectsDir, list);
+    await copyPublicFiles();
 })();
