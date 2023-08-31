@@ -5,7 +5,7 @@ const mdToHTML = require("./mods/md-to-html");
 
 const root = path.join(__dirname, '..');
 const distDir = path.join(root, 'dist');
-const template = fs.readFileSync(path.join(root, 'public', 'index.html')).toString();
+const template = fs.readFileSync(path.join(root, 'public', 'template.html')).toString();
 
 const ensureDir = (dir) => {
     if (!fs.existsSync(dir)) {
@@ -52,7 +52,7 @@ const copyPublicFiles = async () => {
     const dest = path.join(root, 'dist');
 
     fs.cpSync(src, dest, {recursive: true});
-    fs.rmSync(path.join(dest, 'index.html'));
+    fs.rmSync(path.join(dest, 'template.html'));
 }
 
 (async () => {
