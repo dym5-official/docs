@@ -104,7 +104,7 @@ const getVideos = (text) => {
   return videos;
 }
 
-const pre = `<pre class="__code"><div><span></span><span></span><span></span><button data-action="copy-code">Copy</button></div>`;
+const pre = `<pre class="__code"><div><div><i></i><i></i><i></i></div><div><button data-action="copy-code">Copy</button></div></div>`;
 
 const ensureDir = (dir) => {
   if (!fs.existsSync(dir)) {
