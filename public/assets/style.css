@@ -1,10 +1,13 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background-color: #1c1c1c;
 }
 
-html, body, * {
+html,
+body,
+* {
   box-sizing: border-box;
 }
 
@@ -16,7 +19,7 @@ html, body, * {
   width: 100vw;
   z-index: 5;
   padding: 0 18px;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 #__sidebar,
@@ -32,7 +35,7 @@ html, body, * {
 #__sidebar {
   left: 0;
   width: 220px;
-  border-right: 1px solid rgba(255,255,255,0.07)
+  border-right: 1px solid rgba(255, 255, 255, 0.07)
 }
 
 #__body {
@@ -44,4 +47,143 @@ html, body, * {
   width: 800px;
   margin: 0 auto;
   max-width: 100%;
+}
+
+/* code syntax highlight */
+.__code {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.05)
+}
+
+.__code>div {
+  display: flex;
+  padding: 8px 12px;
+}
+
+.__code>div>div:first-child {
+  flex-grow: 1;
+}
+
+.__code>div>div:first-child>i {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-radius: 100%;
+  margin-right: 8px;
+}
+
+.__code>div>div:first-child>i:nth-child(1) {
+  left: 12px;
+  background-color: #ff4a4a;
+}
+
+.__code>div>div:first-child>i:nth-child(2) {
+  left: 26px;
+  background-color: #ffb83d;
+}
+
+.__code>div>div:first-child>i:nth-child(3) {
+  left: 40px;
+  background-color: #00c543;
+}
+
+.__code>div button {
+  border: none;
+  outline: none;
+  font-size: 10px;
+  line-height: 1;
+  padding: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: none;
+  color: silver;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.__code>div button:hover {
+  opacity: 0.65;
+}
+
+.__code>div button:active {
+  opacity: 1;
+}
+
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 16px 12px;
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 20px 20px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hljs {
+  color: silver;
+}
+
+.hljs-keyword {
+  color: #ffb871;
+  font-weight: 700
+}
+
+.hljs-built_in {
+  color: #ffb871
+}
+
+.hljs-literal {
+  color: #ff8080
+}
+
+.hljs-symbol {
+  color: #58e55a
+}
+
+.hljs-comment {
+  color: #5b995b
+}
+
+.hljs-string {
+  color: #ff0
+}
+
+.hljs-number {
+  color: #ff8080
+}
+
+.hljs-addition,
+.hljs-attribute,
+.hljs-bullet,
+.hljs-code,
+.hljs-deletion,
+.hljs-doctag,
+.hljs-function,
+.hljs-link,
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-name,
+.hljs-quote,
+.hljs-regexp,
+.hljs-section,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-selector-pseudo,
+.hljs-selector-tag,
+.hljs-subst,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-title,
+.hljs-type,
+.hljs-variable {
+  color: silver
+}
+
+.hljs-emphasis {
+  font-style: italic
+}
+
+.hljs-strong {
+  font-weight: 700
 }
