@@ -39,3 +39,9 @@ html, body, * {
   width: calc(100vw - 220px);
   left: 220px;
 }
+
+.__container {
+  width: 800px;
+  margin: 0 auto;
+  max-width: 100%;
+}
