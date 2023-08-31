@@ -71,6 +71,7 @@ body,
   width: 12px;
   border-radius: 100%;
   margin-right: 8px;
+  opacity: 0.75;
 }
 
 .__code>div>div:first-child>i:nth-child(1) {
