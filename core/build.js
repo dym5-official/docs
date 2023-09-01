@@ -8,15 +8,21 @@ const root = path.join(__dirname, '..');
 const distDir = path.join(root, 'dist');
 const template = fs.readFileSync(path.join(root, 'public', 'template.html')).toString();
 
+Handlebars.registerHelper('eq', (a, b) => a == b);
+
 const menuTemplate = Handlebars.compile(`
-{{#each this as |section|}}
+{{#each this.sections as |section|}}
 <ul class="__menugroup">
     <li>
         <div class="__grouplabel">{{section.label}}</div>
 
         <ul class="__menulist">
             {{#each section.files as |entry|}}
-                <li><a href="{{entry.uri}}">{{entry.label}}</a></li>
+                {{#if (eq entry.uri ../../current)}}
+                    <li class="__active"><a href="{{entry.uri}}">{{entry.label}}</a></li>
+                {{else}}
+                    <li><a href="{{entry.uri}}">{{entry.label}}</a></li>
+                {{/if}}
             {{/each}}
         </ul>
     </li>
@@ -24,7 +30,7 @@ const menuTemplate = Handlebars.compile(`
 {{/each}}
 `);
 
-let theMenu = '';
+let theMenuSections = [];
 
 const ensureDir = (dir) => {
     if (!fs.existsSync(dir)) {
@@ -32,19 +38,19 @@ const ensureDir = (dir) => {
     }
 }
 
-const writeFile = (file, content) => {
+const writeFile = (file, content, uri) => {
     ensureDir(path.dirname(file));
 
     let html = template;
     
     html = html.replace('{{--body--}}', content);
-    html = html.replace('{{--menu--}}', theMenu);
+    html = html.replace('{{--menu--}}', menuTemplate({ sections: theMenuSections, current: `/projects/${uri}` }).trim());
 
     fs.writeFileSync(file, html);
 }
 
 
-const createMenu = async (projectsDir, list) => {
+const createMenuList = async (projectsDir, list) => {
     const menuSections = [];
 
     for (const project of list) {
@@ -66,9 +72,7 @@ const createMenu = async (projectsDir, list) => {
         }
     }
 
-    theMenu = menuTemplate(menuSections).trim();
-
-    // console.log(theMenu)
+    theMenuSections = menuSections;
 }
 
 const convertFiles = async (projectsDir, list) => {
@@ -82,13 +86,14 @@ const convertFiles = async (projectsDir, list) => {
                 for (const fileEntry of section.files) {
                     let source = path.join(docPath, sect, fileEntry.file);
                     let dest = source.slice(0, -3) + '.html';
+                    let uri = dest;
 
                     source = path.join(projectsDir, source);
                     dest = path.join(distDir, "projects", dest);
 
                     const result = mdToHTML({ md: source });
 
-                    writeFile(dest, result.html);
+                    writeFile(dest, result.html, uri);
                 }
             }
         }
@@ -107,7 +112,7 @@ const copyPublicFiles = async () => {
     const projectsDir = path.join(__dirname, '..', 'projects');
     const list = createFilesMap(projectsDir);
 
-    await createMenu(projectsDir, list);
+    await createMenuList(projectsDir, list);
     await convertFiles(projectsDir, list);
     await copyPublicFiles();
 })();
