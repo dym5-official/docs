@@ -1,11 +1,28 @@
 const path = require("path");
 const fs = require("fs");
+const Handlebars = require("handlebars");
 const createFilesMap = require("./mods/create-files-map");
 const mdToHTML = require("./mods/md-to-html");
 
 const root = path.join(__dirname, '..');
 const distDir = path.join(root, 'dist');
 const template = fs.readFileSync(path.join(root, 'public', 'template.html')).toString();
+
+const menuTemplate = Handlebars.compile(`
+{{#each this as |section|}}
+<ul>
+    <li>
+        {{section.label}}
+
+        <ul>
+            {{#each section.files as |entry|}}
+                <li>{{entry.label}}</li>
+            {{/each}}
+        </ul>
+    </li>
+</ul>
+{{/each}}
+`);
 
 let theMenu = '';
 
@@ -28,7 +45,7 @@ const writeFile = (file, content) => {
 
 
 const createMenu = async (projectsDir, list) => {
-    const fullList = [];
+    const menuSections = [];
 
     for (const project of list) {
         for (const doc of project) {
@@ -36,12 +53,14 @@ const createMenu = async (projectsDir, list) => {
 
             for (const sect in menu) {
                 const section = menu[sect];
-                fullList.push(section);
+                menuSections.push(section);
             }
         }
     }
 
-    theMenu = JSON.stringify(fullList, null, 2);
+    theMenu = menuTemplate(menuSections).trim();
+
+    // console.log(theMenu)
 }
 
 const convertFiles = async (projectsDir, list) => {

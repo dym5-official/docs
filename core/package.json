@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "cli-color": "^2.0.3",
+    "handlebars": "^4.7.8",
     "showdown": "^2.1.0",
     "showdown-highlight": "^3.1.0",
     "yaml": "^2.3.2"
