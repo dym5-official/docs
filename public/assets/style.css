@@ -132,64 +132,64 @@ pre code.hljs * {
 }
 
 .hljs {
-  color: silver;
+  color: #abb2bf;
 }
 
+.hljs-comment,
+.hljs-quote {
+  color: #5c6370;
+  font-style: italic
+}
+
+.hljs-doctag,
+.hljs-formula,
 .hljs-keyword {
-  color: #ffb871;
-  font-weight: 700
+  color: #c678dd
 }
 
-.hljs-built_in {
-  color: #ffb871
+.hljs-deletion,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #e06c75
 }
 
 .hljs-literal {
-  color: #ff8080
-}
-
-.hljs-symbol {
-  color: #58e55a
-}
-
-.hljs-comment {
-  color: #5b995b
-}
-
-.hljs-string {
-  color: #ff0
-}
-
-.hljs-number {
-  color: #ff8080
+  color: #56b6c2
 }
 
 .hljs-addition,
 .hljs-attribute,
-.hljs-bullet,
-.hljs-code,
-.hljs-deletion,
-.hljs-doctag,
-.hljs-function,
-.hljs-link,
-.hljs-meta,
-.hljs-meta .hljs-keyword,
-.hljs-name,
-.hljs-quote,
+.hljs-meta-string,
 .hljs-regexp,
-.hljs-section,
+.hljs-string {
+  color: #98c379
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: #e6c07b
+}
+
+.hljs-attr,
+.hljs-number,
 .hljs-selector-attr,
 .hljs-selector-class,
-.hljs-selector-id,
 .hljs-selector-pseudo,
-.hljs-selector-tag,
-.hljs-subst,
-.hljs-template-tag,
 .hljs-template-variable,
-.hljs-title,
 .hljs-type,
 .hljs-variable {
-  color: silver
+  color: #d19a66
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title {
+  color: #61aeee
 }
 
 .hljs-emphasis {
@@ -198,6 +198,10 @@ pre code.hljs * {
 
 .hljs-strong {
   font-weight: 700
+}
+
+.hljs-link {
+  text-decoration: underline
 }
 
 /* CONTENT */
@@ -227,18 +231,18 @@ pre code.hljs * {
   margin: 0 0 8px 0;
 }
 
-.__content p + h1,
-.__content .__code + h1,
-.__content p + h2,
-.__content .__code + h2,
-.__content p + h3,
-.__content .__code + h3,
-.__content p + h4,
-.__content .__code + h4,
-.__content p + h5,
-.__content .__code + h5,
-.__content p + h6,
-.__content .__code + h6 {
+.__content p+h1,
+.__content .__code+h1,
+.__content p+h2,
+.__content .__code+h2,
+.__content p+h3,
+.__content .__code+h3,
+.__content p+h4,
+.__content .__code+h4,
+.__content p+h5,
+.__content .__code+h5,
+.__content p+h6,
+.__content .__code+h6 {
   margin-top: 24px;
 }
 
@@ -250,7 +254,7 @@ pre code.hljs * {
   list-style-type: none;
 }
 
-.__menugroup + .__menugroup {
+.__menugroup+.__menugroup {
   margin-top: 14px;
   border-top: 2px dashed rgba(255, 255, 255, 0.05);
   padding-top: 14px;
@@ -275,7 +279,7 @@ pre code.hljs * {
   position: relative;
 }
 
-.__menulist li a  {
+.__menulist li a {
   text-decoration: none;
   color: #777;
   font-size: 14px;
@@ -290,6 +294,6 @@ pre code.hljs * {
   text-decoration: underline;
 }
 
-.__menulist li + li {
+.__menulist li+li {
   border-top: 1px dashed rgba(255, 255, 255, 0.04);
 }
