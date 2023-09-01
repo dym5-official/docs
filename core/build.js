@@ -10,13 +10,13 @@ const template = fs.readFileSync(path.join(root, 'public', 'template.html')).toS
 
 const menuTemplate = Handlebars.compile(`
 {{#each this as |section|}}
-<ul>
+<ul class="__menugroup">
     <li>
         {{section.label}}
 
-        <ul>
+        <ul class="__menulist">
             {{#each section.files as |entry|}}
-                <li>{{entry.label}}</li>
+                <li><a href="{{entry.uri}}">{{entry.label}}</a></li>
             {{/each}}
         </ul>
     </li>
@@ -52,7 +52,15 @@ const createMenu = async (projectsDir, list) => {
             const { path: docPath, config: { menu } } = doc;
 
             for (const sect in menu) {
-                const section = menu[sect];
+                const section = JSON.parse(JSON.stringify(menu[sect]));
+
+                section.files = section.files.map((fileEntry) => {
+                    let source = path.join(docPath, sect, fileEntry.file);
+                    let dest = source.slice(0, -3) + '.html';
+                    
+                    return { ...fileEntry, uri: `/${dest}` };
+                });
+
                 menuSections.push(section);
             }
         }
