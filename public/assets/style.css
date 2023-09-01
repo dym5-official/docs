@@ -61,7 +61,7 @@ body,
 
 .__code>div {
   display: flex;
-  padding: 8px 12px;
+  padding: 4px 12px;
 }
 
 .__code>div>div:first-child {
@@ -70,11 +70,11 @@ body,
 
 .__code>div>div:first-child>i {
   display: inline-block;
-  height: 12px;
-  width: 12px;
+  height: 8px;
+  width: 8px;
   border-radius: 100%;
   margin-right: 8px;
-  opacity: 0.75;
+  opacity: 0.6;
 }
 
 .__code>div>div:first-child>i:nth-child(1) {
