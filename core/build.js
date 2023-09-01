@@ -12,7 +12,7 @@ const menuTemplate = Handlebars.compile(`
 {{#each this as |section|}}
 <ul class="__menugroup">
     <li>
-        {{section.label}}
+        <div class="__grouplabel">{{section.label}}</div>
 
         <ul class="__menulist">
             {{#each section.files as |entry|}}
