@@ -274,9 +274,25 @@ pre code.hljs * {
 }
 
 .__menulist li {
-  padding: 4px 0;
+  padding: 4px 0 4px 8px;
   display: block;
   position: relative;
+}
+
+.__menulist li:before {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 2px;
+  background: #777;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -1px;
+}
+
+.__menulist li.__active:before {
+  background: #a55f3d;
 }
 
 .__menulist li a {
