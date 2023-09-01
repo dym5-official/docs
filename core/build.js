@@ -58,7 +58,7 @@ const createMenu = async (projectsDir, list) => {
                     let source = path.join(docPath, sect, fileEntry.file);
                     let dest = source.slice(0, -3) + '.html';
                     
-                    return { ...fileEntry, uri: `/${dest}` };
+                    return { ...fileEntry, uri: `/projects/${dest}` };
                 });
 
                 menuSections.push(section);
