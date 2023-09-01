@@ -30,3 +30,19 @@ function dophp() {
   ]
 }
 ```
+
+## How to do javascript?
+
+```js
+function doSomething() {
+  const items = [4,5,6];
+
+  const mapped = items.map((num) => ({
+    rank: num,
+    sq: num * num,
+    rand: Math.random(),
+  }));
+
+  return mapped;
+}
+```
