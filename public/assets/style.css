@@ -241,3 +241,55 @@ pre code.hljs * {
 .__content .__code + h6 {
   margin-top: 24px;
 }
+
+
+/* SIDE MENU */
+.__menugroup {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.__menugroup + .__menugroup {
+  margin-top: 14px;
+  border-top: 2px dashed rgba(255, 255, 255, 0.05);
+  padding-top: 14px;
+}
+
+.__menugroup .__grouplabel {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: bold;
+  color: #426191;
+}
+
+.__menulist {
+  margin: 0;
+  padding: 0 0 0 8px;
+  list-style-type: none;
+}
+
+.__menulist li {
+  padding: 4px 0;
+  display: block;
+  position: relative;
+}
+
+.__menulist li a  {
+  text-decoration: none;
+  color: #777;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.__menulist li.__active a {
+  color: #a55f3d;
+}
+
+.__menulist li a:hover {
+  text-decoration: underline;
+}
+
+.__menulist li + li {
+  border-top: 1px dashed rgba(255, 255, 255, 0.04);
+}
