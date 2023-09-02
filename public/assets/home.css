@@ -6,12 +6,16 @@
     width: 100vw;
     height: calc(100vh - 52px);
     overflow: auto;
+    background-image: url(images/bbburst.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .__docsintro {
     text-align: center;
     padding: 52px;
-    /* border-bottom: 1px solid rgba(255, 255, 225, 0.07); */
+
 }
 
 .__docsintro h1 {
@@ -19,6 +23,7 @@
     font-size: 48px;
     line-height: 1;
     color: #426191;
+    filter: drop-shadow(2px 2px 2px #000);
 }
 
 .__docsintro p {
@@ -61,7 +66,7 @@
 
 .__projectswrapper .__project>a {
     display: block;
-    background-color: rgba(255, 255, 255, 0.02);
+    background-color: rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     box-shadow: 0 0 2px #426291de;
     text-align: center;
@@ -71,11 +76,11 @@
 }
 
 .__projectswrapper .__project>a:hover {
-    background-color: rgba(255, 255, 255, 0.025);
+    background-color: rgba(0, 0, 0, 0.07);
 }
 
 .__projectswrapper .__project>a:active {
-    background-color: rgba(255, 255, 255, 0.02);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .__projectswrapper .__project>a .__projectlogo {
