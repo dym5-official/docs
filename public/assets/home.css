@@ -5,6 +5,7 @@
     z-index: 5;
     width: 100vw;
     height: calc(100vh - 52px);
+    overflow: auto;
 }
 
 .__docsintro {
@@ -35,22 +36,38 @@
     margin-top: 14px;
 }
 
+.__projectslist {
+    width: 900px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
 .__projectswrapper {
-    margin: -10px;
+    margin: -16px;
+}
+
+.__projectswrapper::after {
+    content: '';
+    display: block;
+    clear: both;
 }
 
 .__projectswrapper .__project {
     width: 33.33333%;
     float: left;
-    padding: 10px;
+    padding: 16px;
 }
 
 .__projectswrapper .__project>a {
     display: block;
-    height: 200px;
     background-color: rgba(255, 255, 255, 0.02);
     border-radius: 8px;
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 2px #426291de;
+    text-align: center;
+    padding: 24px 18px 18px 18px;
+    text-decoration: none;
+    color: #a55f3d;
 }
 
 .__projectswrapper .__project>a:hover {
@@ -59,4 +76,31 @@
 
 .__projectswrapper .__project>a:active {
     background-color: rgba(255, 255, 255, 0.02);
+}
+
+.__projectswrapper .__project>a .__projectlogo {
+    height: 92px;
+    width: 92px;
+    object-fit: cover;
+    display: inline-block;
+}
+
+.__projectswrapper .__project>a div {
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.__projectswrapper .__project>a p {
+    margin: 4px 0 0 0;
+    color: #777;
+    opacity: 0.6;
+}
+.__projectswrapper .__project>a span {
+    color: #426191;
+    text-transform: uppercase;
+    display: block;
+    margin: 18px 0 10px 0;
+    font-weight: bold;
 }
