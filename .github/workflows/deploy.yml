@@ -28,7 +28,7 @@ jobs:
       - name: Upload
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: dym5.com
+          server: account.dym5.com
           username: deploy@dym5.com
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: "./dist/"
